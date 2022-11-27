@@ -46,4 +46,20 @@ object ImageProcessor {
             .map { lab -> lab.toSRGB() }
             .toTypedArray()
     }
+
+    /**
+     * This function gets an image by [imageUrl] then processes it via K-Means algorithm to distribute all pixels
+     * over clusters.
+     *
+     * Each color converts to LAB color format that is more suitable for this task.
+     *
+     * @param: [imageUrl] sets url of the image
+     * @param [colorsCount] sets required count of colors
+     * @return: an array with length [colorsCount] of RGB colors
+     */
+    suspend fun getImageDominantColors(imageUrl: Url, colorsCount: Int = 5): Array<RGB> {
+        val image = ImageDownloaderHelper.downloadImage(imageUrl)
+
+        return getImageDominantColors(image, colorsCount)
+    }
 }
