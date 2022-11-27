@@ -19,7 +19,7 @@ object ImageProcessor {
      * @param [colorsCount] sets required count of colors
      * @return: an array with length [colorsCount] of RGB colors
      */
-    suspend fun getImageDominantColors(image: BufferedImage, colorsCount: Int = 5): Array<RGB> {
+    suspend fun getImageDominantColors(image: BufferedImage, colorsCount: Int): Array<RGB> {
         val colors = Array(image.width * image.height + 1) { DoubleArray(3) }
 
         @OptIn(ExperimentalStdlibApi::class)
@@ -57,7 +57,7 @@ object ImageProcessor {
      * @param [colorsCount] sets required count of colors
      * @return: an array with length [colorsCount] of RGB colors
      */
-    suspend fun getImageDominantColors(imageUrl: Url, colorsCount: Int = 5): Array<RGB> {
+    suspend fun getImageDominantColors(imageUrl: Url, colorsCount: Int): Array<RGB> {
         val image = ImageDownloaderHelper.downloadImage(imageUrl)
 
         return getImageDominantColors(image, colorsCount)
