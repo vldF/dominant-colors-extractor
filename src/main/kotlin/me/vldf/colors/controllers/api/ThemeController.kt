@@ -6,7 +6,7 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import me.vldf.colors.model.ImageProcessor
+import me.vldf.colors.services.ImageProcessor
 import java.io.ByteArrayInputStream
 import javax.imageio.ImageIO
 
