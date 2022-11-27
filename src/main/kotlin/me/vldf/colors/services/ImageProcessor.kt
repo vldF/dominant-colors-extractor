@@ -2,6 +2,8 @@ package me.vldf.colors.services
 
 import com.github.ajalt.colormath.model.LAB
 import com.github.ajalt.colormath.model.RGB
+import io.ktor.http.*
+import kotlinx.coroutines.*
 import smile.clustering.KMeans
 import smile.clustering.PartitionClustering
 import java.awt.image.BufferedImage
@@ -17,7 +19,7 @@ object ImageProcessor {
      * @param [colorsCount] sets required count of colors
      * @return: an array with length [colorsCount] of RGB colors
      */
-    fun getImageDominantColors(image: BufferedImage, colorsCount: Int = 5): Array<RGB> {
+    suspend fun getImageDominantColors(image: BufferedImage, colorsCount: Int = 5): Array<RGB> {
         val colors = Array(image.width * image.height + 1) { DoubleArray(3) }
 
         @OptIn(ExperimentalStdlibApi::class)
@@ -31,11 +33,14 @@ object ImageProcessor {
             }
         }
 
-        val clusters = PartitionClustering.run(10) {
-            KMeans.fit(colors, colorsCount)
+        val clusters = CoroutineScope(Dispatchers.Default).async {
+            PartitionClustering.run(10) {
+                KMeans.fit(colors, colorsCount)
+            }
         }
 
         return clusters
+            .await()
             .centroids
             .map { (l, a, b) -> LAB(l, a, b) }
             .map { lab -> lab.toSRGB() }
