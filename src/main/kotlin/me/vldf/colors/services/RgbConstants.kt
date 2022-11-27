@@ -1,4 +1,4 @@
-package me.vldf.colors.model
+package me.vldf.colors.services
 
 /**
  * Color is represent by 8*3=24 bits of color and 8 bits of alpha (ignored):

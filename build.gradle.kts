@@ -24,6 +24,9 @@ dependencies {
     implementation("org.slf4j:slf4j-api:2.0.4")
     implementation("org.slf4j:slf4j-simple:2.0.4")
 
+    implementation("io.ktor:ktor-client-core:$ktorVersion")
+    implementation("io.ktor:ktor-client-cio:$ktorVersion")
+
     implementation("com.github.ajalt.colormath:colormath:3.2.1")
     implementation("com.github.haifengl:smile-core:2.6.0")
 

@@ -1,4 +1,4 @@
-package me.vldf.colors.model
+package me.vldf.colors.services
 
 import com.github.ajalt.colormath.model.RGB
 
