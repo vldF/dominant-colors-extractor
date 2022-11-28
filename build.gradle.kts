@@ -1,8 +1,10 @@
+import org.jetbrains.kotlin.gradle.plugin.mpp.pm20.util.archivesName
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "1.7.21"
     kotlin("plugin.serialization") version "1.7.21"
+    id("io.ktor.plugin") version "2.1.3"
 }
 
 group = "me.vldf"
@@ -45,3 +47,25 @@ val compileKotlin: KotlinCompile by tasks
 compileKotlin.kotlinOptions {
     languageVersion = "1.8"
 }
+
+application {
+    mainClass.set("me.vldf.colors.MainKt")
+}
+
+ktor {
+    fatJar {
+        archivesName.set("dominant-colors-extractor.jar")
+    }
+}
+
+val distZip by tasks
+distZip.enabled = false
+
+val distTar by tasks
+distTar.enabled = false
+
+val shadowDistTar by tasks
+shadowDistTar.enabled = false
+
+val shadowDistZip by tasks
+shadowDistZip.enabled = false
