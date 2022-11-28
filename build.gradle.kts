@@ -21,6 +21,7 @@ dependencies {
     implementation("io.ktor:ktor-server-default-headers-jvm:$ktorVersion")
     implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
     implementation("io.ktor:ktor-server-content-negotiation:$ktorVersion")
+    implementation("io.ktor:ktor-server-status-pages:$ktorVersion")
     implementation("org.slf4j:slf4j-api:2.0.4")
     implementation("org.slf4j:slf4j-simple:2.0.4")
 
