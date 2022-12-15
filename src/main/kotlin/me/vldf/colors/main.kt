@@ -27,7 +27,7 @@ fun main() {
 }
 
 @ExperimentalSerializationApi
-private fun Application.configureApiRoutes() {
+internal fun Application.configureApiRoutes() {
     routing {
         route("api") {
             getThemeRoute()

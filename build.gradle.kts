@@ -34,6 +34,7 @@ dependencies {
     implementation("com.github.haifengl:smile-core:2.6.0")
 
     testImplementation(kotlin("test"))
+    testImplementation("io.ktor:ktor-server-test-host:$ktorVersion")
 }
 
 tasks.test {
@@ -43,8 +44,14 @@ tasks.test {
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
 }
+
 val compileKotlin: KotlinCompile by tasks
 compileKotlin.kotlinOptions {
+    languageVersion = "1.8"
+}
+
+val compileTestKotlin: KotlinCompile by tasks
+compileTestKotlin.kotlinOptions {
     languageVersion = "1.8"
 }
 
