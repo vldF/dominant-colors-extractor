@@ -1,4 +1,5 @@
 # The service for an image theme extraction
+![tests](https://github.com/vldf/dominant-colors-extractor/actions/workflows/tests.yml/badge.svg)
 
 The service to get rid of the image theme extraction problem.
 
